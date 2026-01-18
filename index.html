@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversor JSON para CSV - Online, Grátis e Seguro</title>
+    <meta name="description" content="Converta JSON para CSV instantaneamente. Processamento 100% no navegador, sem upload, sem limites. Ideal para desenvolvedores e análise de dados.">
+    <style>
+        body { font-family: Arial; max-width: 800px; margin: 40px auto; padding: 20px; }
+        textarea { width: 100%; height: 200px; font-family: monospace; }
+        button { padding: 10px 20px; background: #007acc; color: white; border: none; cursor: pointer; }
+        .preview { margin-top: 20px; overflow-x: auto; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        .cta { background: #f0f8ff; padding: 20px; margin: 30px 0; border-radius: 10px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>🔄 Conversor JSON para CSV</h1>
+    <p><strong>100% gratuito, seguro e offline</strong> — seus dados não saem do seu computador.</p>
+    
+    <textarea id="jsonInput" placeholder='Cole seu JSON aqui. Exemplo: [{"nome": "João", "idade": 25}, {"nome": "Maria", "idade": 30}]'></textarea>
+    <br><br>
+    <button onclick="convert()">Converter para CSV</button>
+    <button onclick="copyToClipboard()">📋 Copiar CSV</button>
+    <button onclick="downloadCSV()">⬇ Baixar CSV</button>
+    
+    <div class="preview" id="preview"></div>
+    
+    <!-- CTA (Call to Action) - AQUI VOCÊ VENDE SEU PRODUTO PRINCIPAL -->
+    <div class="cta">
+        <h3>🚀 Próximo Nível: Automatize isso!</h3>
+        <p>Se você precisa converter JSON para CSV <strong>automaticamente, via API, ou em grandes volumes</strong>, conheça nossa solução profissional.</p>
+        <a href="https://seusite.com/produto-principal" target="_blank">
+            <button style="background: #28a745;">👉 Conhecer API/SaaS Completo</button>
+        </a>
+        <p><small>Com integração direta com Excel, Google Sheets, webhooks e suporte para JSON complexo.</small></p>
+    </div>
+
+    <script>
+        function convert() {
+            try {
+                const json = JSON.parse(document.getElementById('jsonInput').value);
+                const csv = jsonToCSV(json);
+                document.getElementById('preview').innerHTML = `<h3>Pré-visualização:</h3><pre>${csv}</pre>`;
+                window.csvResult = csv;
+            } catch (e) {
+                alert("JSON inválido. Verifique a formatação.");
+            }
+        }
+
+        function jsonToCSV(json) {
+            if (!Array.isArray(json) || json.length === 0) return '';
+            const headers = Object.keys(json[0]);
+            const rows = json.map(item => headers.map(h => `"${item[h] || ''}"`));
+            return [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+        }
+
+        function copyToClipboard() {
+            if (!window.csvResult) return alert("Converta primeiro!");
+            navigator.clipboard.writeText(window.csvResult);
+            alert("CSV copiado!");
+        }
+
+        function downloadCSV() {
+            if (!window.csvResult) return alert("Converta primeiro!");
+            const blob = new Blob([window.csvResult], { type: 'text/csv' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'dados.csv';
+            a.click();
+        }
+    </script>
+</body>
+</html>
