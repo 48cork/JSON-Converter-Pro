@@ -808,15 +808,41 @@
             <p style="color: var(--gray); margin-bottom: 20px;">Ferramentas gratuitas para desenvolvedores</p>
             
             <div class="footer-links">
-                <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                <a href="#"><i class="fas fa-bug"></i> Reportar Bug</a>
-                <a href="#"><i class="fas fa-lightbulb"></i> Sugerir Ferramenta</a>
-                <a href="#"><i class="fas fa-envelope"></i> Contato</a>
-                <a href="#"><i class="fas fa-file-alt"></i> Privacidade</a>
+                <a href="https://github.com/48cork/JSON-Converter-Pro" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://github.com/48cork/JSON-Converter-Pro/issues" target="_blank">
+                    <i class="fas fa-bug"></i> Reportar Bug
+                </a>
+                <a href="https://github.com/48cork/JSON-Converter-Pro/issues" target="_blank">
+                    <i class="fas fa-lightbulb"></i> Sugerir Ferramenta
+                </a>
+                <a href="#" onclick="alert('Contato: abra uma issue no GitHub 😊')">
+                    <i class="fas fa-envelope"></i> Contato
+                </a>
+                <a href="#" onclick="alert('Privacidade: 100% seguro! Nenhum dado sai do seu navegador.')">
+                    <i class="fas fa-file-alt"></i> Privacidade
+                </a>
             </div>
             
-            <div class="copyright">
-                © 2024 JSONTools.io • Todos os direitos reservados • 
+            <!-- LINK DO REPOSITÓRIO ADICIONADO AQUI -->
+            <div style="margin-top: 20px; font-size: 0.85rem; color: var(--gray);">
+                <i class="fab fa-github"></i> Repositório: 
+                <a href="https://github.com/48cork/JSON-Converter-Pro" 
+                   target="_blank"
+                   style="color: var(--primary); text-decoration: none; font-weight: 500;">
+                    github.com/48cork/JSON-Converter-Pro
+                </a>
+                • 
+                <a href="https://github.com/48cork/JSON-Converter-Pro/blob/main/LICENSE" 
+                   target="_blank"
+                   style="color: var(--gray); text-decoration: none;">
+                    MIT License
+                </a>
+            </div>
+            
+            <div class="copyright" style="margin-top: 15px;">
+                © 2024 JSONTools.io • 
                 <span style="color: var(--accent);">Processamento 100% local no seu navegador</span>
             </div>
         </footer>
@@ -1136,7 +1162,6 @@
                     @keyframes slideOut {
                         from { transform: translateX(0); opacity: 1; }
                         to { transform: translateX(100%); opacity: 0; }
-                    }
                 `;
                 document.head.appendChild(style);
             }
